@@ -1,64 +1,40 @@
 ---
-import { Image } from "astro:assets";
-import Accordion from "./Accordion.astro";
-import AccordionItem from "./AccordionItem.astro";
+import { Image } from 'astro:assets';
+import Accordion from './Accordion.astro';
+import AccordionItem from './AccordionItem.astro';
 
-import fStock1 from "../assets/stocks/faq/f-stock-1.jpg";
-import fStock2 from "../assets/stocks/faq/f-stock-2.jpg";
-import fStock3 from "../assets/stocks/faq/f-stock-3.jpg";
-import fStock4 from "../assets/stocks/faq/f-stock-4.jpg";
-import fStock5 from "../assets/stocks/faq/f-stock-5.jpg";
-import fStock6 from '../assets/stocks/faq/f-stock-6.jpg';
+import fStock1 from '../assets/stocks/faq/f-stock-1.jpg';
+import fStock2 from '../assets/stocks/faq/f-stock-2.jpg';
+import fStock3 from '../assets/stocks/faq/f-stock-3.jpg';
 
 const faqItems = [
   {
-    value: "first",
-    question: "Насколько безопасен терапевтический гипноз?",
+    value: 'first',
+    question: 'Онлайн-консультация',
     answer:
-      "Терапевтический гипноз абсолютно безопасен. Клиент сохраняет полный контроль и осознание происходящего, находясь в состоянии придельной концентрации в процессе сеанса. По завершению клиент помнит всё, что с ним происходило, и чувствует себя бодрым и полным сил.",
+      'Получите бесплатную онлайн-консультацию, оставив заявку. Это первый шаг к изменению вашего состояния.',
     image: fStock1,
   },
   {
-    value: "second",
-    question: "Насколько эффективен  терапевтический гипноз?",
+    value: 'second',
+    question: 'Заключение договора',
     answer:
-      "Гипноз доказал свою высокую эффективность, работая на уровне подсознания, где записаны все воспоминания как на жёстком диске компьютера. Задача специалиста: найти эти воспоминания и переформатировать их на положительные на уровне подсознания.",
+      'После консультации заключите договор и оплатите терапию. Это обеспечит стабильность и последовательность в вашем лечении.',
     image: fStock2,
   },
   {
-    value: "third",
-    question: "Все ли люди поддаются гипнозу?",
+    value: 'third',
+    question: 'Гарантия результата',
     answer:
-      "Большинство людей восприимчивы к гипнозу, за исключением случаев тяжелых психических заболеваний или состояний опьянения. Человек регулярно попадает в трансовое состояние, которое подобно гипнозу. Например, монотонная езда на машине, когда слипаются глаза,",
+      'Я гарантирую достижение результатов, которых вы еще не получали. После преодоления эмоционального выгорания вы будете наслаждаться новым состоянием круглосуточно.',
     image: fStock3,
-  },
-  {
-    value: "fourth",
-    question: "Сколько времени нужно, чтобы решить проблему через гипноз?",
-    answer:
-      "Продолжительность индивидуальна и может варьироваться от 4 до 10 сеансов, в зависимости от сложности и глубины проблемы.",
-    image: fStock4,
-  },
-  {
-    value: "fifth",
-    question: "Поможет ли гипнотерапия контролировать злость и агрессию?",
-    answer:
-      "Да, гипнотерапия эффективно помогает управлять и полностью избавляться от злости, агрессии и гнева уже с первых сеансов.",
-    image: fStock5,
-  },
-  {
-    value: "sixth",
-    question: "С какого возраста можно применять гипнотерапию у детей?",
-    answer:
-      "Гипнотерапию с детьми можно начинать с 3-4 лет, когда ребёнок начинает осознавать собственное “Я”, с учётом индивидуального подхода и комплексной семейной терапии. ",
-    image: fStock6,
   },
 ];
 ---
 
 <section class="container scroll-mt-24 pb-12 pt-16 sm:py-24" id="faq">
   <h2 class="text-4xl font-extrabold text-stromboli-950 md:text-5xl">
-    Часто задаваемые вопросы
+    Путь к исцелению: шаг за шагом
   </h2>
   <Accordion
     class="mt-8 grid grid-cols-1 gap-4 sm:mt-16 sm:gap-8 md:grid-cols-2 lg:grid-cols-3"
