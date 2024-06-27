@@ -1,0 +1,143 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  value: string;
+  "data-state"?: "open" | "closed";
+}
+
+const { value, ...attrs } = Astro.props;
+
+const panelId = `accordion-${value}-${Math.random().toString(36).slice(2)}`;
+const triggerId = `accordion-${value}-id-${Math.random().toString(36).slice(2)}`;
+---
+
+<accordion-item {...attrs}>
+  <h3>
+    <button
+      type="button"
+      aria-expanded="true"
+      class="flex w-full items-center justify-between gap-4 transition-all [&[data-state=closed]>[data-icon]]:rotate-180"
+      aria-controls={panelId}
+      data-value={value}
+      data-state="closed"
+      data-trigger
+      id={triggerId}
+    >
+      <slot name="header" />
+      <slot name="icon" />
+    </button>
+  </h3>
+
+  <div
+    id={panelId}
+    role="region"
+    aria-labelledby={triggerId}
+    data-state="closed"
+    data-panel
+    class="max-h-0 grow overflow-hidden transition-[max-height] duration-300 ease-in-out"
+  >
+    <slot />
+  </div>
+</accordion-item>
+
+<script>
+  class AccordionItem extends HTMLElement implements CustomElement {
+    static get observedAttributes() {
+      return ["class", "data-state"];
+    }
+
+    private _trigger!: HTMLButtonElement;
+    private _panel!: HTMLDivElement;
+
+    constructor() {
+      super();
+
+      this.setAttribute("data-state", "closed");
+    }
+
+    connectedCallback(): void {
+      this._trigger = this.querySelector("[data-trigger]")!;
+      this._panel = this.querySelector("[data-panel]")!;
+
+      this._setupEventListeners();
+    }
+
+    disconnectedCallback(): void {
+      throw new Error("Method not implemented.");
+    }
+
+    adoptedCallback(): void {
+      throw new Error("Method not implemented.");
+    }
+
+    attributeChangedCallback(
+      name: string,
+      oldValue: string | null,
+      newValue: string,
+    ) {
+      if (oldValue === newValue) {
+        return;
+      }
+
+      if (name === "class") {
+        this.classList.value = newValue;
+      }
+
+      if (name === "data-state") {
+        this._updateState(newValue);
+      }
+    }
+
+    private _setupEventListeners(): void {
+      this._trigger.addEventListener("click", () => {
+        this._toggleState();
+      });
+    }
+
+    private _toggleState(): void {
+      const state = this.getAttribute("data-state");
+
+      if (state === "open") {
+        this.setAttribute("data-state", "closed");
+        return;
+      }
+
+      this.setAttribute("data-state", "open");
+    }
+
+    private _updateState(state: string): void {
+      this._updateTriggerState(state);
+      this._updatePanelState(state);
+    }
+
+    private _updateTriggerState(state: string): void {
+      this._trigger.setAttribute("data-state", state);
+      this._trigger.setAttribute(
+        "aria-expanded",
+        state === "open" ? "true" : "false",
+      );
+    }
+
+    private _updatePanelState(state: string): void {
+      const isOpen = state === "open";
+      const panel = this._panel;
+
+      if (!this._panel) {
+        throw new Error(
+          "AccordionItem._updatePanelState: Cannot find panel element",
+        );
+      }
+
+      panel.setAttribute("data-state", state);
+
+      if (isOpen) {
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+      } else {
+        panel.style.maxHeight = "0";
+      }
+    }
+  }
+
+  customElements.define("accordion-item", AccordionItem);
+</script>

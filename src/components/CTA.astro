@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import ctaBg from "../assets/cta-bg.jpg";
+import Button from "./Button.astro";
+---
+
+<section
+  class="relative z-10 mx-auto max-w-[1440px] overflow-hidden rounded-r-[32px] bg-stromboli-700 pb-12 pt-16 transition-all duration-200 sm:py-24 lg:rounded-[64px] xl:rounded-[128px]"
+  id="cta"
+>
+  <Image
+    class="absolute inset-0 z-0 h-full w-full object-cover transition-all duration-200"
+    src={ctaBg}
+    alt=""
+    aria-hidden
+    id="cta-bg"
+  />
+  <div class="container relative">
+    <h3
+      class="text-4xl font-extrabold text-stromboli-50 md:text-center md:text-5xl"
+    >
+      Я знаю, как Вам помочь, потому что прошла этот путь сама и теперь
+      здоровая, успешная, счастливая и любимая!
+    </h3>
+    <p
+      class="mx-auto mt-8 max-w-[720px] text-lg font-medium text-stromboli-200 md:text-center"
+    >
+      Я помогла сотням людей, таких же, как Вы, и теперь перед Вами стоит выбор
+      — готовы ли Вы к изменениям в своей жизни, чтобы стать здоровыми,
+      счастливыми и наслаждаться каждым моментом жизни? Гарантированный
+      результат, который можно проверить уже после первого сеанса!
+    </p>
+    <Button href="#contact" class="mx-0 mt-8 md:mx-auto"
+      >Записаться на консультацию</Button
+    >
+  </div>
+</section>

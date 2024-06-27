@@ -1,0 +1,65 @@
+---
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { sanityClient } from 'sanity:client';
+import SanityImage from './SanityImage.astro';
+
+type Certificate = {
+  title: string;
+  image: SanityImageSource;
+};
+
+const certificates = await sanityClient.fetch<Certificate[]>(
+  `*[_type == "certificate"]`
+);
+---
+
+<div class="relative flex h-full w-full overflow-hidden py-12 sm:pb-8 sm:pt-16">
+  <div
+    class="relative flex flex-row overflow-hidden [--gap:4rem] [gap:var(--gap)]"
+  >
+    <div class="flex shrink-0 animate-marquee [gap:var(--gap)]">
+      {
+        certificates.map((certificate) => (
+          <SanityImage
+            node={certificate.image}
+            loading="eager"
+            class="h-[200px]"
+          />
+        ))
+      }
+    </div>
+    <div class="flex shrink-0 animate-marquee [gap:var(--gap)]">
+      {
+        certificates.map((certificate) => (
+          <SanityImage
+            node={certificate.image}
+            loading="eager"
+            class="h-[200px]"
+          />
+        ))
+      }
+    </div>
+    <div class="flex shrink-0 animate-marquee [gap:var(--gap)]">
+      {
+        certificates.map((certificate) => (
+          <SanityImage
+            node={certificate.image}
+            loading="eager"
+            class="h-[200px]"
+          />
+        ))
+      }
+    </div>
+    <div class="flex shrink-0 animate-marquee [gap:var(--gap)]">
+      {
+        certificates.map((certificate) => (
+          <SanityImage
+            node={certificate.image}
+            loading="eager"
+            class="h-[200px]"
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>

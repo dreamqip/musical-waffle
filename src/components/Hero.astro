@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import Button from './Button.astro';
+
+import image from '../assets/hero.png';
+---
+
+<div
+  class="mx-auto max-w-[1440px] overflow-hidden rounded-r-[32px] bg-stromboli-700 transition-all duration-200 lg:rounded-[64px] xl:rounded-[128px]"
+  id="hero"
+>
+  <div class="container relative">
+    <div class="grid place-items-center lg:grid-cols-2 lg:items-end lg:gap-8">
+      <div
+        class="grid items-center py-12 text-left sm:text-center md:pt-20 lg:items-start lg:text-left"
+      >
+        <h1 class="max-w-2xl text-4xl font-bold text-stromboli-50 md:text-6xl">
+          Жизнь без травм: результат после первого сеанса
+        </h1>
+        <div
+          class="mt-8 max-w-lg text-left text-lg font-medium text-stromboli-200 sm:mx-auto sm:text-center lg:mx-0 lg:text-left"
+        >
+          <i
+            >“Мой девиз: каждый сам Творец своей жизни! Все в твоих руках! Нет
+            ничего невозможного! Главное желание и стремление!”</i
+          >
+
+          <p class="mt-4 sm:mt-6">— Евгения Вальдманн, психолог</p>
+        </div>
+
+        <Button href="#contact" class="mx-0 mt-8 sm:mx-auto sm:mt-12 lg:mx-0">
+          Записаться на консультацию
+        </Button>
+      </div>
+      <Image
+        class="min-h-[400px] object-cover object-center"
+        src={image}
+        densities={[1, 2, 3]}
+        width={528}
+        height={564}
+        loading="eager"
+        fetchpriority="high"
+        alt="Евгения Вальдманн, психолог"
+      />
+    </div>
+  </div>
+</div>
