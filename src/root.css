@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Raleway Variable";
+  src:
+    local("Raleway Variable"),
+    url("/Raleway-Variable.woff2") format("woff2");
+  font-display: fallback;
+  font-style: normal;
+  font-weight: 400 900;
+}
