@@ -42,7 +42,7 @@ const triggerId = `accordion-${value}-id-${Math.random().toString(36).slice(2)}`
 </accordion-item>
 
 <script>
-  class AccordionItem extends HTMLElement implements CustomElement {
+  class AccordionItem extends HTMLElement {
     static get observedAttributes() {
       return ["class", "data-state"];
     }

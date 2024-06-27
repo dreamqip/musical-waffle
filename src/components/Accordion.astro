@@ -16,7 +16,7 @@ const { ...attrs } = Astro.props;
 
   // TODO: add support for aligning based on largest item
 
-  class AccordionGroup extends HTMLElement implements CustomElement {
+  class AccordionGroup extends HTMLElement {
     private _accordions!: NodeListOf<HTMLElement>;
 
     constructor() {

@@ -57,6 +57,7 @@ const { title } = Astro.props;
 
     <script>
       // Apply the CSS-has-pseudo polyfill
+      // @ts-expect-error
       import cssHasPseudo from 'css-has-pseudo/browser';
       cssHasPseudo(document);
     </script>
