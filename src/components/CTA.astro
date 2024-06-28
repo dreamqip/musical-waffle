@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import ctaBg from '../assets/cta-bg.jpg';
 import Button from './Button.astro';
 ---
 
@@ -8,13 +6,7 @@ import Button from './Button.astro';
   class="relative z-10 mx-auto max-w-[1440px] overflow-hidden rounded-r-[32px] bg-stromboli-700 pb-12 pt-16 transition-all duration-200 sm:py-24 lg:rounded-[64px] xl:rounded-[128px]"
   id="cta"
 >
-  <Image
-    class="absolute inset-0 z-0 h-full w-full object-cover transition-all duration-200"
-    src={ctaBg}
-    alt=""
-    aria-hidden
-    id="cta-bg"
-  />
+  <div id="cta-bg" aria-hidden></div>
   <div class="container relative">
     <h3
       class="text-4xl font-extrabold text-stromboli-50 md:text-center md:text-5xl"
