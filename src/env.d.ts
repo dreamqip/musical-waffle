@@ -13,3 +13,12 @@ declare interface CustomElement extends HTMLElement {
     newValue: string,
   ): void;
 }
+
+declare interface ImportMetaEnv {
+  readonly PUBLIC_SANITY_PROJECT_ID: string;
+  readonly PUBLIC_SANITY_DATASET: string;
+}
+
+declare interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
